@@ -51,10 +51,14 @@ app.get('/restaurants/:id', (req, res) => {
   const filePath = path.join(__dirname, 'data', 'restaurants.json')
   const restaurants = JSON.parse(fs.readFileSync(filePath))
   const restaurant = restaurants.find((el) => el.id === restaurantID)
-  res.render('restaurant-details', {
-    rid: restaurantID,
-    restaurant: restaurant,
-  })
+
+  if (restaurant) {
+    res.render('restaurant-details', {
+      restaurant,
+    })
+  } else {
+    res.render('404')
+  }
 })
 
 app.listen(3000)
