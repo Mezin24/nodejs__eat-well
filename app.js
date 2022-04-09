@@ -6,24 +6,23 @@ const app = express()
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+
 app.get('/', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'index.html')
-  res.sendFile(filePath)
+  res.render('index')
 })
 
 app.get('/about', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'about.html')
-  res.sendFile(filePath)
+  res.render('about')
 })
 
 app.get('/confirm', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'confirm.html')
-  res.sendFile(filePath)
+  res.render('confirm')
 })
 
 app.get('/recommend', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'recommend.html')
-  res.sendFile(filePath)
+  res.render('recommend')
 })
 
 app.post('/recommend', (req, res) => {
@@ -36,8 +35,13 @@ app.post('/recommend', (req, res) => {
 })
 
 app.get('/restaurants', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'restaurants.html')
-  res.sendFile(filePath)
+  const filePath = path.join(__dirname, 'data', 'restaurants.json')
+  const restaurants = JSON.parse(fs.readFileSync(filePath))
+
+  res.render('restaurants', {
+    numberOfRestaurants: restaurants.length,
+    restaurants,
+  })
 })
 
 app.listen(3000)

@@ -49,24 +49,32 @@
     </aside>
     <main>
       <h1>Recommended restaurants</h1>
+      <% if(restaurants.length === 0) { %>
+      <p>
+        Unfortunately, we have no restaurants yet - maybe start recomending
+        some?
+      </p>
+      <% } else { %>
       <p>Find your next favorite restaurants with help of our other users!</p>
+      <p>We found <%= numberOfRestaurants %> for you.</p>
       <ul id="restaurants-list">
+        <% restaurants.forEach(restaurant => { %>
         <li class="restaurant-item">
           <article>
             <h2>Restaurant Title</h2>
             <div class="restaurant-meta">
-              <p>Mexican</p>
-              <p>Address of the restaurant, including city</p>
+              <p><%= restaurant.name %></p>
+              <p><%= restaurant.address %>, <%= restaurant.cuisine %></p>
             </div>
-            <p>
-              A short description, explaining why this restaurant is awesome!
-            </p>
+            <p><%= restaurant.description %></p>
             <div class="restaurant-actions">
-              <a href="">View Website</a>
+              <a href="<%= restaurant.website %>">View Website</a>
             </div>
           </article>
         </li>
+        <% }) %>
       </ul>
+      <% } %>
     </main>
   </body>
 </html>
