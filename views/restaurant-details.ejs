@@ -7,11 +7,11 @@
   <body>
     <%- include('includes/header.ejs') %> <%- include('includes/side-drawer') %>
     <main>
-      <h1>Recommended restaurants <%= rid %></h1>
-      <h1>Title of the restaurant</h1>
-      <p>Cuisine | Address</p>
-      <p>Description of the restaurant</p>
-      <a href="#">View Website</a>
+      <h1>Recommended restaurants</h1>
+      <h1><%= restaurant.name %></h1>
+      <p><%= restaurant.cuisine %> | <%= restaurant.address %></p>
+      <p><%= restaurant.description %></p>
+      <a href="<%= restaurant.website %>">View Website</a>
     </main>
   </body>
 </html>
