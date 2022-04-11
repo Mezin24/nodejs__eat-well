@@ -57,15 +57,19 @@ app.get('/restaurants/:id', (req, res) => {
       restaurant,
     })
   } else {
-    res.render('404')
+    res.status(404).render('404')
   }
 })
 
 app.use((req, res) => {
-  res.render('404')
+  res.status(404).render('404')
 })
 // app.get('/*', (req, res) => {
 //   res.render('404')
 // })
+
+app.use((error, req, res, next) => {
+  res.status(500).render('500')
+})
 
 app.listen(3000)
