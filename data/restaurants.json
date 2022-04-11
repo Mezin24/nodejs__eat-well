@@ -16,14 +16,6 @@
     "description": "Nice"
   },
   {
-    "name": "Test",
-    "address": "Обнинск, 11",
-    "cuisine": "Spanish",
-    "website": "https://mail.ru",
-    "description": "Espania",
-    "id": "9a30164e-44eb-4f91-a7f5-e2f132bec0a0"
-  },
-  {
     "name": "Bianco Rosso",
     "address": "Obninsk Marksa 30a",
     "cuisine": "itlian",
